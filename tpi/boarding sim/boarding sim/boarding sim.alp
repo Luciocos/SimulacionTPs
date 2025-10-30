@@ -17995,7 +17995,7 @@ System.out.println();
 
 
 standingPassengersCount += root.totalTimesStandUp;
-avgTimesStandUp = standingPassengersCount / (this.getRunCount() + 1);
+avgTimesStandUp = (double)standingPassengersCount / (this.getRunCount() + 1);
 histogramBoardingTimeData.add(root.totalBoardingTimeInMinutes);
 histogramSeatingTimeData.add(root.avgSeatingTimeInSeconds);
 
