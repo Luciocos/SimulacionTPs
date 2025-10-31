@@ -388,7 +388,7 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 				<Connector>
 					<Id>1755698294586</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>740</X><Y>1120</Y>
+					<X>800</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -421,7 +421,7 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 				<Connector>
 					<Id>1755702593781</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>600</X><Y>1120</Y>
+					<X>660</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -454,7 +454,7 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 				<Connector>
 					<Id>1755702593783</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>510</X><Y>1120</Y>
+					<X>570</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -487,7 +487,7 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 				<Connector>
 					<Id>1755702604757</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>530</X><Y>1140</Y>
+					<X>590</X><Y>1140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -522,7 +522,7 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 				<Connector>
 					<Id>1760241880397</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>1090</X><Y>1120</Y>
+					<X>1150</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -548,14 +548,14 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></StartupCode>
 						<ItemName><![CDATA[out]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-40</X><Y>0</Y></Point>
 						<Point><X>-170</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1761072727153</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>880</X><Y>1120</Y>
+					<X>940</X><Y>1120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -933,7 +933,7 @@ if (view == plane.airplaneView3D){
 				<EmbeddedObject>
 					<Id>1755086513773</Id>
 					<Name><![CDATA[pedSource]]></Name>
-					<X>380</X><Y>1120</Y>
+					<X>440</X><Y>1120</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1155,7 +1155,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				<EmbeddedObject>
 					<Id>1755086548903</Id>
 					<Name><![CDATA[pedService]]></Name>
-					<X>740</X><Y>1110</Y>
+					<X>800</X><Y>1110</Y>
 					<Label><X>-15</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1253,7 +1253,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				<EmbeddedObject>
 					<Id>1755698236589</Id>
 					<Name><![CDATA[waitingRoom]]></Name>
-					<X>600</X><Y>1110</Y>
+					<X>660</X><Y>1110</Y>
 					<Label><X>-15</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1369,7 +1369,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				<EmbeddedObject>
 					<Id>1755702592477</Id>
 					<Name><![CDATA[pedSelectOutput]]></Name>
-					<X>500</X><Y>1120</Y>
+					<X>560</X><Y>1120</Y>
 					<Label><X>-45</X><Y>-35</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1478,7 +1478,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				<EmbeddedObject>
 					<Id>1759843888440</Id>
 					<Name><![CDATA[boardPlane]]></Name>
-					<X>1050</X><Y>1110</Y>
+					<X>1110</X><Y>1110</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1684,7 +1684,7 @@ agent.inPlane = true;]]></Code>
 				<EmbeddedObject>
 					<Id>1760241878941</Id>
 					<Name><![CDATA[pedBoardingQueue]]></Name>
-					<X>880</X><Y>1110</Y>
+					<X>940</X><Y>1110</Y>
 					<Label><X>-35</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4623,7 +4623,7 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
     			<TimePlot>
 					<Id>1761777993082</Id>
 					<Name><![CDATA[PassengersSeatedPlot]]></Name>
-					<X>90</X><Y>590</Y>
+					<X>20</X><Y>710</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4644,15 +4644,15 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 						</RecurrenceCode>
 					</RecurrenceProperties>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>260</Width>
-					<Height>210</Height>
+					<Width>390</Width>
+					<Height>310</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>50</XOffset>
+						<XOffset>30</XOffset>
 						<YOffset>30</YOffset>
-						<Width>180</Width>
-						<Height>120</Height>
+						<Width>350</Width>
+						<Height>220</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -4676,7 +4676,7 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Title]]></Title>
+						<Title><![CDATA[Seated passengers (%)]]></Title>
 					<Id>1761777994210</Id>
 					<Expression><![CDATA[passengersSeatedDataset]]></Expression>
 					<Color>-65536</Color>
@@ -15693,7 +15693,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -15736,7 +15736,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -15779,7 +15779,7 @@ row.releaseSeatAccess(ped);]]></Code>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
@@ -15823,7 +15823,7 @@ equipaje de mano]]></Text>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<ZHeight>10</ZHeight>
