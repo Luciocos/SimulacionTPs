@@ -28,9 +28,9 @@ public enum BoardingMethod {
   BACK_TO_FRONT,
   FIRST_IN_FIRST_OUT
 }]]></AdditionalClassCode>
+			<Import><![CDATA[import static com.anylogic.engine.Utilities.*;]]></Import>
 			<StartupCode><![CDATA[if(!started){
 	setView(initSimulationView2D);
-	getExperiment().pause();
 	pedSource.stop();
 }else{
 	initAfterStart();
@@ -329,7 +329,7 @@ getEngine().setStopTime(5, HOUR);
 					<X>-600</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
@@ -417,7 +417,7 @@ getEngine().setStopTime(5, HOUR);
 					<X>-850</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[boolean]]></Type>
@@ -647,7 +647,7 @@ getEngine().setStopTime(5, HOUR);
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="cyclic">
+					<Properties TriggerType="condition" Mode="occuresOnce">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
@@ -665,19 +665,16 @@ getEngine().setStopTime(5, HOUR);
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</RecurrenceCode>
-						<Condition><![CDATA[false]]></Condition>
+						<Condition><![CDATA[time(MINUTE)>startBoarding && started]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (!started)return;
-if(startBoarding <= time(MINUTE)){
-	liberatedGroup = 1;
-	for (Passenger p : waitingRoom.getPeds()) {
-   		if (p.group == liberatedGroup) {
-        	waitingRoom.free(p);
-        	passengersInQueue++;
-    	}
-	}
+					<Action><![CDATA[liberatedGroup = 1;
+for (Passenger p : waitingRoom.getPeds()) {
+   	if (p.group == liberatedGroup) {
+        waitingRoom.free(p);
+        passengersInQueue++;
+    }
 }]]></Action>
 				</Event>
 				<Event>
@@ -950,7 +947,27 @@ pedSource.set_maxArrivals(getPlane().seatsNumber);
 airbusA320.groupsNumber = groupsNumber;
 
 PassengersSeatedPlot.setFixedVerticalScale(0, 110);
+
+passengersSeatedDataset.reset();
+
+
 boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1762111837494</Id>
+					<Name><![CDATA[setTimeFormat]]></Name>
+					<X>-400</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[t]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return String.format("%02d:%02d", t/3600, (t%3600)/60);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -972,11 +989,12 @@ boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></Body>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							<Code><![CDATA[45]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</RecurrenceCode>
 					</RecurrenceProperties>
-					<FreezeXAxis>true</FreezeXAxis>
+					<FreezeXAxis>false</FreezeXAxis>
+					<HorizontalAxisExpression><![CDATA[time(MINUTE)-startSimulation]]></HorizontalAxisExpression>
 					<VerticalAxisExpression><![CDATA[(100*seatedPassengers)/getPlane().seatsNumber]]></VerticalAxisExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 				</DataSet>
@@ -2636,7 +2654,10 @@ getPlane().mainMenu.setPos(view.getX(), view.getY());
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
 					<Text><![CDATA[5:50 PM]]></Text>
-					<TextCode><![CDATA[dateFormat.format( date() )]]></TextCode>
+					<TextCode><![CDATA[started ? 
+	setTimeFormat((int) max(0, round( (time() - startSimulation) * 60 )))+" PM" :
+	 "00:00 PM"
+]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>26</Size>
@@ -4998,7 +5019,7 @@ setView(airportView2D);
 initAfterStart();
 
 
-getExperiment().run();
+//getEngine().run();  
 started = true;
 startSimulation = time(MINUTE);
 startBoarding = startBoarding + (int) startSimulation;
@@ -6258,7 +6279,7 @@ return nearGate < inGateLimit && inGateNode == 0 ;]]></Body>
 main.liberatedGroup++;
 
 if (main.liberatedGroup > main.getPlane().groupsNumber){
-	main.startsBoardingGroup.suspend();
+	//main.startsBoardingGroup.stop();
 	for (Passenger p : main.waitingRoom.getPeds()) {
 		main.waitingRoom.free(p);
         main.passengersInQueue++;
