@@ -293,21 +293,6 @@ getEngine().setStopTime(5, HOUR);
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1761748966665</Id>
-					<Name><![CDATA[boardingMethod]]></Name>
-					<X>100</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[BoardingMethod]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[BoardingMethod.WINDOWS_MIDDLE_AISLE]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1761788110096</Id>
 					<Name><![CDATA[totalTimesStandUp]]></Name>
 					<X>100</X><Y>350</Y>
@@ -340,19 +325,18 @@ getEngine().setStopTime(5, HOUR);
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1761745852469</Id>
-					<Name><![CDATA[boardingMethodNumber]]></Name>
-					<Unit>cmbBoardingMethod.getValueIndex();</Unit> 
-					<X>100</X><Y>500</Y>
+					<Name><![CDATA[boardingMethod]]></Name>
+					<X>100</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
+						<Type><![CDATA[String]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA["WINDOWS_MIDDLE_AISLE"]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1761745852467</Id>
@@ -741,10 +725,10 @@ if (plane instanceof AirbusA320) {
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[switch (boardingMethod) {
-	case FIRST_IN_FIRST_OUT:    return firstInFirstOut(seat,row);
-	case BACK_TO_FRONT:        return backToFront(seat, row);
-	case FRONT_TO_BACK:        return frontToBack(seat, row);
-	case WINDOWS_MIDDLE_AISLE: return windowsMiddleAisle(seat, row);
+	case "FIRST_IN_FIRST_OUT":    return firstInFirstOut(seat,row);
+	case "BACK_TO_FRONT":        return backToFront(seat, row);
+	case "FRONT_TO_BACK":        return frontToBack(seat, row);
+	case "WINDOWS_MIDDLE_AISLE": return windowsMiddleAisle(seat, row);
 	default: return firstInFirstOut(seat, row);
 }]]></Body>
 				</Function>
@@ -951,7 +935,7 @@ PassengersSeatedPlot.setFixedVerticalScale(0, 110);
 passengersSeatedDataset.reset();
 
 
-boardingMethod = BoardingMethod.values()[boardingMethodNumber];]]></Body>
+boardingMethod = cmbBoardingMethod.getValue();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -5011,7 +4995,7 @@ else {
 						<Enabled>true</Enabled>
 						<ActionCode><![CDATA[level.setVisible(true);
 initSimulation.setVisible(false);
-boardingMethodNumber = cmbBoardingMethod.getValueIndex();
+boardingMethod = cmbBoardingMethod.getValue();
 groupsNumber = (int)sldGroupsNumber.getValue();
 setView(airportView2D);
 
@@ -18284,9 +18268,9 @@ else {
 
 			<Parameters>
 				<Parameter>
-					<ParameterName><![CDATA[boardingMethodNumber]]></ParameterName>
+					<ParameterName><![CDATA[boardingMethod]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[cmbBoardingMethod.getValueIndex();]]></Code>
+						<Code><![CDATA[cmbBoardingMethod.getValue();]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -18361,9 +18345,9 @@ else {
 
 			<Parameters>
 				<Parameter>
-					<ParameterName><![CDATA[boardingMethodNumber]]></ParameterName>
+					<ParameterName><![CDATA[boardingMethod]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
+						<Code><![CDATA["WINDOWS_MIDDLE_AISLE"]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -18419,7 +18403,7 @@ histogramSeatingTimeData.reset();
 standingPassengersCount = 0;
 avgTimesStandUp = 0;]]></BeforeEachExperimentRunCode>
 			<BeforeSimulationRunCode><![CDATA[System.out.println("Arrancando");
-System.out.println("Método de abordaje: " + root.boardingMethodNumber);
+System.out.println("Método de abordaje: " + root.boardingMethod);
 System.out.println("Cantidad de grupos: " + root.groupsNumber);
 System.out.println();]]></BeforeSimulationRunCode>
 			<AfterSimulationRunCode><![CDATA[System.out.println("totalBoardingTimeInMinutes: " + root.totalBoardingTimeInMinutes);
@@ -18948,7 +18932,7 @@ excelFile.close();]]></AfterExperimentCode>
 			<FreeformParamValue>	
 				<Id>1761745852469</Id>
 				<Expression Class="CodeValue">
-					<Code><![CDATA[cmbBoardingMethod.getValueIndex();]]></Code>
+					<Code><![CDATA[cmbBoardingMethod.getValue();]]></Code>
 				</Expression>
 			</FreeformParamValue>
 			<FreeformParamValue>	
