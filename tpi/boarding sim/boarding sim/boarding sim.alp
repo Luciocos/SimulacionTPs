@@ -840,7 +840,7 @@ getEngine().setStopTime(5, HOUR);]]></Action>
 	case "BACK_TO_FRONT":        return backToFront(seat, row);
 	case "FRONT_TO_BACK":        return frontToBack(seat, row);
 	case "WINDOWS_MIDDLE_AISLE": return windowsMiddleAisle(seat, row);
-	default: return firstInFirstOut(seat, row);
+	default: throw new Error("No se encontró el método: " + boardingMethod);
 }]]></Body>
 				</Function>
 				<Function AccessType="private" StaticFunction="false">
@@ -987,7 +987,7 @@ return group;]]></Body>
 					<Body><![CDATA[view.navigateTo();
 currentView = view;
 
-if (view == airportView2D || view == airportView3D) {
+if (view == airportView2D || view == airportView3D || view == statsView) {
 	mainMenu.setPos(view.getX(), view.getY());
 	return;
 }
@@ -1041,9 +1041,12 @@ PassengersSeatedPlot.setFixedVerticalScale(0, 110);
 
 if (startSimulation == false) {
 	boardingMethod = cmbBoardingMethod.getValue();
+	groupsNumber = (int)sldGroupsNumber.getValue();
+	getPlane().groupsNumber = groupsNumber;
 	startSimulation = true;
 }
 
+setView(airportView2D);
 runSimulation();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1323,6 +1326,7 @@ runSimulation();]]></Body>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[if (!startSimulation) return;
+
 List<String> freeSeats = new ArrayList<>();
 for (Map.Entry<String, Boolean> entry : getPlane().seats.entrySet()) {
     if (!entry.getValue()) { 
@@ -2572,7 +2576,7 @@ if (boardingStartTime == 0){
 				<Rectangle>
 					<Id>1760530352588</Id>
 					<Name><![CDATA[airport2dButton]]></Name>
-					<X>60</X><Y>0</Y>
+					<X>40</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2597,7 +2601,7 @@ if (boardingStartTime == 0){
 				<Text>
 					<Id>1760530352590</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>160</X><Y>10</Y>
+					<X>140</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2618,7 +2622,7 @@ if (boardingStartTime == 0){
 				<Rectangle>
 					<Id>1760530352592</Id>
 					<Name><![CDATA[airport3dButton]]></Name>
-					<X>260</X><Y>0</Y>
+					<X>240</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2643,7 +2647,7 @@ if (boardingStartTime == 0){
 				<Text>
 					<Id>1760530352594</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>360</X><Y>10</Y>
+					<X>340</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2664,7 +2668,7 @@ if (boardingStartTime == 0){
 				<Rectangle>
 					<Id>1760530352596</Id>
 					<Name><![CDATA[airplane2dButton]]></Name>
-					<X>690</X><Y>0</Y>
+					<X>840</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2680,7 +2684,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>160</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -2691,7 +2695,7 @@ setView(view);
 				<Text>
 					<Id>1760530352598</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>790</X><Y>10</Y>
+					<X>920</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2712,7 +2716,7 @@ setView(view);
 				<Rectangle>
 					<Id>1760530352600</Id>
 					<Name><![CDATA[airplane3dButton]]></Name>
-					<X>890</X><Y>0</Y>
+					<X>1000</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2729,7 +2733,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>160</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -2740,7 +2744,7 @@ setView(view);
 				<Text>
 					<Id>1760530352602</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>990</X><Y>10</Y>
+					<X>1080</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2761,7 +2765,7 @@ setView(view);
 				<Rectangle>
 					<Id>1760530352604</Id>
 					<Name><![CDATA[rectangle1]]></Name>
-					<X>1320</X><Y>0</Y>
+					<X>1340</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2774,7 +2778,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>160</Width>
+					<Width>140</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -2820,7 +2824,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>60</Width>
+					<Width>40</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -2831,7 +2835,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762737379676</Id>
 					<Name><![CDATA[airportLogicButton]]></Name>
-					<X>460</X><Y>0</Y>
+					<X>440</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2856,7 +2860,7 @@ setView(view);
 				<Text>
 					<Id>1762737379678</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>575</X><Y>10</Y>
+					<X>555</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2877,7 +2881,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762737540068</Id>
 					<Name><![CDATA[airplaneLogicButton]]></Name>
-					<X>1090</X><Y>0</Y>
+					<X>1160</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2892,7 +2896,7 @@ setView(view);]]></OnClickCode>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>232</Width>
+					<Width>180</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -2903,7 +2907,7 @@ setView(view);]]></OnClickCode>
 				<Text>
 					<Id>1762737540070</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>1205</X><Y>10</Y>
+					<X>1250</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2914,6 +2918,52 @@ setView(view);]]></OnClickCode>
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
 					<Text><![CDATA[Lógica Avión]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1762789201486</Id>
+					<Name><![CDATA[airplane2dButton2]]></Name>
+					<X>672</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[setView(statsView);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>168</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillColorCode><![CDATA[currentView == statsView ?
+	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1762789201488</Id>
+					<Name><![CDATA[text19]]></Name>
+					<X>757</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Estadísticas]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>26</Size>
@@ -5035,7 +5085,7 @@ setView(view);]]></OnClickCode>
 				<Rectangle>
 					<Id>1762738109840</Id>
 					<Name><![CDATA[airport2dButton1]]></Name>
-					<X>60</X><Y>0</Y>
+					<X>35</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5052,15 +5102,14 @@ setView(view);]]></OnClickCode>
 					<Width>160</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
-					<FillColor>-14774017</FillColor>
-					<FillColorCode><![CDATA[currentView == airportView2D ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColor>-8272897</FillColor>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109842</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>140</X><Y>10</Y>
+					<X>115</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5081,7 +5130,7 @@ setView(view);]]></OnClickCode>
 				<Rectangle>
 					<Id>1762738109844</Id>
 					<Name><![CDATA[airport3dButton1]]></Name>
-					<X>220</X><Y>0</Y>
+					<X>195</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5095,18 +5144,17 @@ setView(view);]]></OnClickCode>
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>175</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
-					<FillColorCode><![CDATA[currentView == airportView3D ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109846</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>320</X><Y>10</Y>
+					<X>280</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5127,7 +5175,7 @@ setView(view);]]></OnClickCode>
 				<Rectangle>
 					<Id>1762738109848</Id>
 					<Name><![CDATA[airplane2dButton1]]></Name>
-					<X>610</X><Y>0</Y>
+					<X>700</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5143,18 +5191,17 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>150</Width>
+					<Width>120</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
-					<FillColorCode><![CDATA[currentView == ((AirbusA320) getPlane()).airplaneView2D ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109850</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>690</X><Y>10</Y>
+					<X>760</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5175,7 +5222,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762738109852</Id>
 					<Name><![CDATA[airplane3dButton1]]></Name>
-					<X>760</X><Y>0</Y>
+					<X>820</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5192,18 +5239,17 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>140</Width>
+					<Width>120</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
-					<FillColorCode><![CDATA[currentView == ((AirbusA320) getPlane()).airplaneView3D ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109854</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>830</X><Y>10</Y>
+					<X>885</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5224,7 +5270,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762738109856</Id>
 					<Name><![CDATA[rectangle2]]></Name>
-					<X>1050</X><Y>0</Y>
+					<X>1090</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5237,7 +5283,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>150</Width>
+					<Width>110</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -5283,7 +5329,7 @@ setView(view);
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>60</Width>
+					<Width>35</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -5294,7 +5340,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762738109862</Id>
 					<Name><![CDATA[airportLogicButton1]]></Name>
-					<X>420</X><Y>0</Y>
+					<X>370</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5311,15 +5357,13 @@ setView(view);
 					<Width>190</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
-					<FillColor>-8272897</FillColor>
-					<FillColorCode><![CDATA[currentView == airportLogicView ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColor>-14774017</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109864</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>515</X><Y>10</Y>
+					<X>465</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5340,7 +5384,7 @@ setView(view);
 				<Rectangle>
 					<Id>1762738109866</Id>
 					<Name><![CDATA[airplaneLogicButton1]]></Name>
-					<X>900</X><Y>0</Y>
+					<X>940</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5361,14 +5405,13 @@ setView(view);
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
-					<FillColorCode><![CDATA[currentView == ((AirbusA320) getPlane()).airplaneViewLogic ?
-	ColorMenuSelected : ColorMenuNotSelected]]></FillColorCode>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
 					<Id>1762738109868</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>975</X><Y>10</Y>
+					<X>1015</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5379,6 +5422,51 @@ setView(view);
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
 					<Text><![CDATA[Lógica Avión]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1762789907402</Id>
+					<Name><![CDATA[airplane2dButton3]]></Name>
+					<X>560</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[setView(statsView);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>140</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1762789907404</Id>
+					<Name><![CDATA[text20]]></Name>
+					<X>630</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Estadísticas]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>20</Size>
@@ -5617,7 +5705,7 @@ al avión hasta que se sienta]]></Text>
 					</RecurrenceProperties>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>330</Width>
-					<Height>340</Height>
+					<Height>360</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
@@ -5649,7 +5737,7 @@ al avión hasta que se sienta]]></Text>
 					<Id>1762787387054</Id>
 					<Expression><![CDATA[preflightControlNoWorking]]></Expression>
 					<Color>-1632213</Color>
-						<Title><![CDATA[Al pedo]]></Title>
+						<Title><![CDATA[Inactiva]]></Title>
 					</DataItem>
     			</PieChart>
 				<Text>
@@ -5896,13 +5984,7 @@ else {
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor>-16777216</TextColor>
 						<Enabled>true</Enabled>
-						<ActionCode><![CDATA[level.setVisible(true);
-initSimulation.setVisible(false);
-boardingMethod = cmbBoardingMethod.getValue();
-groupsNumber = (int)sldGroupsNumber.getValue();
-setView(airportView2D);
-
-initSimulation();]]></ActionCode>
+						<ActionCode><![CDATA[initSimulation();]]></ActionCode>
 					</BasicProperties>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="24" Style="0"/>
@@ -7255,7 +7337,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455175</Id>
 					<Name><![CDATA[airport2dButton1]]></Name>
-					<X>60</X><Y>0</Y>
+					<X>40</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7278,7 +7360,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738455177</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>160</X><Y>10</Y>
+					<X>140</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7299,7 +7381,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455179</Id>
 					<Name><![CDATA[airport3dButton1]]></Name>
-					<X>260</X><Y>0</Y>
+					<X>240</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7322,7 +7404,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738455181</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>360</X><Y>10</Y>
+					<X>340</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7343,7 +7425,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455183</Id>
 					<Name><![CDATA[airplane2dButton1]]></Name>
-					<X>690</X><Y>0</Y>
+					<X>840</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7357,7 +7439,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>160</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7368,7 +7450,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738455185</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>790</X><Y>10</Y>
+					<X>920</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7389,7 +7471,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455187</Id>
 					<Name><![CDATA[airplane3dButton1]]></Name>
-					<X>890</X><Y>0</Y>
+					<X>1000</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7403,7 +7485,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>160</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7414,7 +7496,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738455189</Id>
 					<Name><![CDATA[text11]]></Name>
-					<X>990</X><Y>10</Y>
+					<X>1080</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7435,7 +7517,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455191</Id>
 					<Name><![CDATA[rectangle2]]></Name>
-					<X>1320</X><Y>0</Y>
+					<X>1340</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7448,7 +7530,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>160</Width>
+					<Width>140</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7494,35 +7576,12 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>60</Width>
+					<Width>40</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
 					<FillColorCode><![CDATA[ColorMenuNotSelected
 ]]></FillColorCode>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Rectangle>
-					<Id>1762738455197</Id>
-					<Name><![CDATA[airportLogicButton]]></Name>
-					<X>460</X><Y>0</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<OnClickCode><![CDATA[getMain().setView(getMain().airportLogicView);]]></OnClickCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor/>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>232</Width>
-					<Height>50</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-8272897</FillColor>
 					<FillMaterial>null</FillMaterial>
 				</Rectangle>
 				<Text>
@@ -7549,7 +7608,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738455201</Id>
 					<Name><![CDATA[airplaneLogicButton]]></Name>
-					<X>1090</X><Y>0</Y>
+					<X>1160</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7563,7 +7622,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>232</Width>
+					<Width>180</Width>
 					<Height>50</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7574,7 +7633,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738455203</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>1205</X><Y>10</Y>
+					<X>1250</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7585,6 +7644,94 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
 					<Text><![CDATA[Lógica Avión]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1762789643523</Id>
+					<Name><![CDATA[airplane2dButton3]]></Name>
+					<X>672</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[getMain().setView(getMain().statsView);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>168</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1762789643525</Id>
+					<Name><![CDATA[text20]]></Name>
+					<X>757</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Estadísticas]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1762789643527</Id>
+					<Name><![CDATA[airportLogicButton3]]></Name>
+					<X>440</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[getMain().setView(getMain().airportLogicView);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>232</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1762789643529</Id>
+					<Name><![CDATA[text24]]></Name>
+					<X>555</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Lógica Aeropuerto]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>26</Size>
@@ -7612,7 +7759,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696703</Id>
 					<Name><![CDATA[airport2dButton2]]></Name>
-					<X>60</X><Y>0</Y>
+					<X>35</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7635,7 +7782,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696705</Id>
 					<Name><![CDATA[text15]]></Name>
-					<X>140</X><Y>10</Y>
+					<X>115</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7656,7 +7803,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696707</Id>
 					<Name><![CDATA[airport3dButton2]]></Name>
-					<X>220</X><Y>0</Y>
+					<X>195</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7670,7 +7817,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>200</Width>
+					<Width>175</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7679,7 +7826,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696709</Id>
 					<Name><![CDATA[text16]]></Name>
-					<X>320</X><Y>10</Y>
+					<X>280</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7700,7 +7847,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696711</Id>
 					<Name><![CDATA[airplane2dButton2]]></Name>
-					<X>610</X><Y>0</Y>
+					<X>700</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7714,7 +7861,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>150</Width>
+					<Width>120</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7723,7 +7870,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696713</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>690</X><Y>10</Y>
+					<X>760</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7744,7 +7891,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696715</Id>
 					<Name><![CDATA[airplane3dButton2]]></Name>
-					<X>760</X><Y>0</Y>
+					<X>820</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7758,7 +7905,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>140</Width>
+					<Width>120</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7767,7 +7914,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696717</Id>
 					<Name><![CDATA[text18]]></Name>
-					<X>830</X><Y>10</Y>
+					<X>885</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7788,7 +7935,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696719</Id>
 					<Name><![CDATA[rectangle3]]></Name>
-					<X>1050</X><Y>0</Y>
+					<X>1090</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7801,7 +7948,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>150</Width>
+					<Width>110</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7847,7 +7994,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<LineColor/>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>60</Width>
+					<Width>35</Width>
 					<Height>40</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-8272897</FillColor>
@@ -7858,7 +8005,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696725</Id>
 					<Name><![CDATA[airportLogicButton1]]></Name>
-					<X>420</X><Y>0</Y>
+					<X>370</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7881,7 +8028,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696727</Id>
 					<Name><![CDATA[text13]]></Name>
-					<X>515</X><Y>10</Y>
+					<X>465</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7902,7 +8049,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Rectangle>
 					<Id>1762738696729</Id>
 					<Name><![CDATA[airplaneLogicButton1]]></Name>
-					<X>900</X><Y>0</Y>
+					<X>940</X><Y>0</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7927,7 +8074,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 				<Text>
 					<Id>1762738696731</Id>
 					<Name><![CDATA[text14]]></Name>
-					<X>975</X><Y>10</Y>
+					<X>1015</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7938,6 +8085,51 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<Rotation>0.0</Rotation>
 					<Color>-1</Color>
 					<Text><![CDATA[Lógica Avión]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1762790284744</Id>
+					<Name><![CDATA[airplane2dButton6]]></Name>
+					<X>560</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[getMain().setView(getMain().airportLogicView);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>140</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillColorCode><![CDATA[ColorMenuNotSelected]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1762790284746</Id>
+					<Name><![CDATA[text30]]></Name>
+					<X>630</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Estadísticas]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>20</Size>
