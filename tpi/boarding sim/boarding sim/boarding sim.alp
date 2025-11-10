@@ -4,10 +4,12 @@
 	         AnyLogic Project File
 *************************************************
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.6.202509050523" AlpVersion="8.9.6">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.9.6.202509050524" AlpVersion="8.9.6">
 <Model>
 	<Id>1755085745142</Id>
 	<Name><![CDATA[boarding sim]]></Name>
+	<Description><![CDATA[This is an Airbus A320 Boarding Simulation, developed for academic pourposes in university UTN FRRO.
+Developers:]]></Description>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[boarding_sim]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -18084,9 +18086,54 @@ airbusA320.pedWait.free(passenger);
 			<EnableDeveloperPanel>false</EnableDeveloperPanel>
 			<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 		</AnimationProperties>
-		<Inputs>		
+		<Inputs>
+    		<RunConfigurationInput>
+				<Id>1761937759171</Id>
+				<Name><![CDATA[Boarding method number]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[boarding_sim]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[boardingMethodNumber]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>
+    		<RunConfigurationInput>
+				<Id>1761937759172</Id>
+				<Name><![CDATA[Groups number]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[boarding_sim]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[groupsNumber]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>
+    		<RunConfigurationInput>
+				<Id>1761937759173</Id>
+				<Name><![CDATA[Start boarding]]></Name>
+				<InputReference>
+					<PackageName><![CDATA[boarding_sim]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[startBoarding]]></ItemName>
+				</InputReference>
+    		</RunConfigurationInput>		
 		</Inputs>
 		<Outputs>
+    		<RunConfigurationOutput>
+				<Id>1761937766329</Id>
+				<Name><![CDATA[Passengers seated dataset]]></Name>
+				<OutputReference>
+					<PackageName><![CDATA[boarding_sim]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[passengersSeatedDataset]]></ItemName>
+				</OutputReference>
+    		</RunConfigurationOutput>
+    		<RunConfigurationOutput>
+				<Id>1761937766331</Id>
+				<Name><![CDATA[Passengers seated plot]]></Name>
+				<OutputReference>
+					<PackageName><![CDATA[boarding_sim]]></PackageName>
+					<ClassName><![CDATA[Main]]></ClassName>
+					<ItemName><![CDATA[PassengersSeatedPlot]]></ItemName>
+				</OutputReference>
+    		</RunConfigurationOutput>
 		</Outputs>
 	</RunConfiguration>
 	<Experiments>
@@ -18302,7 +18349,7 @@ else {
 				<Title><![CDATA[boarding sim : Simulation]]></Title>
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
-				<RealTimeScale>1.0</RealTimeScale>
+				<RealTimeScale>0.04</RealTimeScale>
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Never]]></StopOption>
