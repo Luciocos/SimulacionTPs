@@ -126,7 +126,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1755701709046</Id>
 					<Name><![CDATA[liberatedGroup]]></Name>
-					<X>2320</X><Y>1480</Y>
+					<X>2320</X><Y>1640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -187,7 +187,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1761055966514</Id>
 					<Name><![CDATA[totalBoardingTimeInMinutes]]></Name>
-					<X>2320</X><Y>1680</Y>
+					<X>2320</X><Y>1840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -223,7 +223,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1761059047470</Id>
 					<Name><![CDATA[avgSeatingTimeInSeconds]]></Name>
-					<X>2320</X><Y>1730</Y>
+					<X>2320</X><Y>1890</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -235,7 +235,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1761068338707</Id>
 					<Name><![CDATA[passengersInQueue]]></Name>
-					<X>2320</X><Y>1530</Y>
+					<X>2320</X><Y>1690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -247,7 +247,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1761744863237</Id>
 					<Name><![CDATA[seatedPassengers]]></Name>
-					<X>2320</X><Y>1580</Y>
+					<X>2320</X><Y>1740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -289,7 +289,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="PlainVariable">
 					<Id>1761788110096</Id>
 					<Name><![CDATA[totalTimesStandUp]]></Name>
-					<X>2320</X><Y>1630</Y>
+					<X>2320</X><Y>1790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -397,7 +397,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1761745852469</Id>
 					<Name><![CDATA[boardingMethod]]></Name>
-					<X>2320</X><Y>1430</Y>
+					<X>2320</X><Y>1590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -421,7 +421,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Variable Class="Parameter">
 					<Id>1761746439146</Id>
 					<Name><![CDATA[groupsNumber]]></Name>
-					<X>2320</X><Y>1380</Y>
+					<X>2320</X><Y>1540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -495,7 +495,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1755698294586</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>3040</X><Y>1400</Y>
+					<X>3040</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -528,7 +528,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1755702593781</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>2900</X><Y>1400</Y>
+					<X>2900</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -561,7 +561,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1755702593783</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>2810</X><Y>1400</Y>
+					<X>2810</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -594,7 +594,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1755702604757</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>2830</X><Y>1420</Y>
+					<X>2830</X><Y>1580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -629,7 +629,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1760241880397</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>3390</X><Y>1400</Y>
+					<X>3390</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -662,7 +662,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 				<Connector>
 					<Id>1761072727153</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>3180</X><Y>1400</Y>
+					<X>3180</X><Y>1560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1155,7 +1155,7 @@ runSimulation();]]></Body>
 				<EmbeddedObject>
 					<Id>1755086513773</Id>
 					<Name><![CDATA[pedSource]]></Name>
-					<X>2680</X><Y>1400</Y>
+					<X>2680</X><Y>1560</Y>
 					<Label><X>-15</X><Y>-30</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1380,7 +1380,7 @@ inTerminal++;]]></Code>
 				<EmbeddedObject>
 					<Id>1755086548903</Id>
 					<Name><![CDATA[preflightControl]]></Name>
-					<X>3040</X><Y>1390</Y>
+					<X>3040</X><Y>1550</Y>
 					<Label><X>-15</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1489,7 +1489,7 @@ preflightControlNoWorking = time(MINUTE)-preflightControlWorking;	]]></Code>
 				<EmbeddedObject>
 					<Id>1755698236589</Id>
 					<Name><![CDATA[waitingRoom]]></Name>
-					<X>2900</X><Y>1390</Y>
+					<X>2900</X><Y>1550</Y>
 					<Label><X>-15</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1605,7 +1605,7 @@ preflightControlNoWorking = time(MINUTE)-preflightControlWorking;	]]></Code>
 				<EmbeddedObject>
 					<Id>1755702592477</Id>
 					<Name><![CDATA[pedSelectOutput]]></Name>
-					<X>2800</X><Y>1400</Y>
+					<X>2800</X><Y>1560</Y>
 					<Label><X>-45</X><Y>-35</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1714,7 +1714,7 @@ preflightControlNoWorking = time(MINUTE)-preflightControlWorking;	]]></Code>
 				<EmbeddedObject>
 					<Id>1759843888440</Id>
 					<Name><![CDATA[boardPlane]]></Name>
-					<X>3350</X><Y>1390</Y>
+					<X>3350</X><Y>1550</Y>
 					<Label><X>-25</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1922,7 +1922,7 @@ inPlane++;]]></Code>
 				<EmbeddedObject>
 					<Id>1760241878941</Id>
 					<Name><![CDATA[pedBoardingQueue]]></Name>
-					<X>3180</X><Y>1390</Y>
+					<X>3180</X><Y>1550</Y>
 					<Label><X>-35</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5071,7 +5071,7 @@ setView(view);]]></OnClickCode>
 				<Group>
 					<Id>1762738109838</Id>
 					<Name><![CDATA[mainMenu1]]></Name>
-					<X>2240</X><Y>1240</Y>
+					<X>2240</X><Y>1400</Y>
 					<Label><X>9.853</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6035,14 +6035,14 @@ else {
 				<Area>
 					<Id>1762736538372</Id>
 					<Name><![CDATA[airportLogicView]]></Name>
-					<X>2240</X><Y>1240</Y>
+					<X>2240</X><Y>1400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1200</Width>
-					<Height>780</Height>
+					<Height>1005</Height>
 				</Area>
 				<Area>
 					<Id>1762739818047</Id>
@@ -8179,7 +8179,7 @@ for (Passenger p : main.waitingRoom.getPeds()) {
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
 					<Width>1200</Width>
-					<Height>780</Height>
+					<Height>1005</Height>
 				</Area>
 			</Areas>
 
