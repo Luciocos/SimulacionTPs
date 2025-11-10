@@ -301,6 +301,99 @@ import java.sql.ResultSetMetaData;]]></Import>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762785374155</Id>
+					<Name><![CDATA[inTerminal]]></Name>
+					<X>-1050</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762785381431</Id>
+					<Name><![CDATA[inQueue]]></Name>
+					<X>-1050</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762785383814</Id>
+					<Name><![CDATA[inPlane]]></Name>
+					<X>-1050</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762785490112</Id>
+					<Name><![CDATA[seated]]></Name>
+					<X>-1050</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762787470230</Id>
+					<Name><![CDATA[preflightControlWorking]]></Name>
+					<X>-1050</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762787472486</Id>
+					<Name><![CDATA[preflightControlNoWorking]]></Name>
+					<X>-1050</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1762787582550</Id>
+					<Name><![CDATA[preflightControlStart]]></Name>
+					<X>-1050</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1761745852469</Id>
 					<Name><![CDATA[boardingMethod]]></Name>
@@ -410,7 +503,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[pedService]]></ItemName>
+						<ItemName><![CDATA[preflightControl]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -519,7 +612,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[pedService]]></ItemName>
+						<ItemName><![CDATA[preflightControl]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -587,7 +680,7 @@ import java.sql.ResultSetMetaData;]]></Import>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[boarding_sim]]></PackageName>
 						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[pedService]]></ItemName>
+						<ItemName><![CDATA[preflightControl]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.pedestrian]]></PackageName>
@@ -998,6 +1091,40 @@ runSimulation();]]></Body>
 					<VerticalAxisExpression><![CDATA[(100*seatedPassengers)/getPlane().seatsNumber]]></VerticalAxisExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 				</DataSet>
+    			<HistogramData>
+					<Id>1762784416624</Id>
+					<Name><![CDATA[seatingTimeDataset]]></Name>
+					<X>-200</X><Y>400</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1762784416622</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1762848000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>10</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[0.1]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
 			</AnalysisData>
 			<AgentLinks>
 				<AgentLink>
@@ -1210,7 +1337,8 @@ ped.seatLetter = passengerSeat.replaceAll("[0-9]", "");
 ped.seatRow = Integer.parseInt(passengerSeat.replaceAll("[A-Z]",""));
 
 ped.group = assignBoardingGroup(ped.seatLetter, ped.seatRow);
-ped.speed = ped.getComfortableSpeed();]]></Code>
+ped.speed = ped.getComfortableSpeed();
+inTerminal++;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -1247,7 +1375,7 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1755086548903</Id>
-					<Name><![CDATA[pedService]]></Name>
+					<Name><![CDATA[preflightControl]]></Name>
 					<X>3040</X><Y>1390</Y>
 					<Label><X>-15</X><Y>-20</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1292,6 +1420,10 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[inTerminal--;
+inQueue++;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnterQueue]]></Name>
@@ -1304,9 +1436,16 @@ ped.speed = ped.getComfortableSpeed();]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onBeginService]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[preflightControlStart = time(MINUTE);
+preflightControlNoWorking = time(MINUTE)-preflightControlWorking;	]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEndService]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[preflightControlWorking = preflightControlWorking + time(MINUTE)- preflightControlStart ]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -1596,7 +1735,9 @@ send("boarding", agent);
 
 ((AirbusA320) plane).passengersBoarding.take(agent);
 
-agent.inPlane = true;]]></Code>
+agent.inPlane = true;
+inQueue--;
+inPlane++;]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -4810,7 +4951,7 @@ setView(view);]]></OnClickCode>
     			<TimePlot>
 					<Id>1761777993082</Id>
 					<Name><![CDATA[PassengersSeatedPlot]]></Name>
-					<X>4640</X><Y>100</Y>
+					<X>4680</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4831,15 +4972,15 @@ setView(view);]]></OnClickCode>
 						</RecurrenceCode>
 					</RecurrenceProperties>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>390</Width>
-					<Height>310</Height>
+					<Width>480</Width>
+					<Height>340</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>30</XOffset>
 						<YOffset>30</YOffset>
-						<Width>350</Width>
-						<Height>220</Height>
+						<Width>440</Width>
+						<Height>250</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -4863,7 +5004,7 @@ setView(view);]]></OnClickCode>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
-						<Title><![CDATA[Seated passengers (%)]]></Title>
+						<Title><![CDATA[Pasajeros sentados (%)]]></Title>
 					<Id>1761777994210</Id>
 					<Expression><![CDATA[passengersSeatedDataset]]></Expression>
 					<Color>-65536</Color>
@@ -5248,6 +5389,290 @@ setView(view);
 			</Presentation>
 
 				</Group>
+    			<Histogram>
+					<Id>1762784887415</Id>
+					<Name><![CDATA[seatingTimeHistogram]]></Name>
+					<X>5480</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>false</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1762784887413</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1762848000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>480</Width>
+					<Height>340</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>400</Width>
+						<Height>250</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<ShowPDF>true</ShowPDF>
+					<ShowCDF>false</ShowCDF>
+					<ShowMean>false</ShowMean>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.9</RelativeWidth>
+					</Bars>
+					<HistogramDataExpression>
+					<Id>1762784888626</Id>
+					<Expression><![CDATA[seatingTimeDataset]]></Expression>
+						<ColorPDF>-8097537</ColorPDF>
+						<ColorCDF>-6632142</ColorCDF>
+						<ColorLowPercent>-60269</ColorLowPercent>
+						<ColorHighPercent>-4343957</ColorHighPercent>
+						<ColorMean>-10496</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[Tiempo hasta sentarse]]></Title>							
+					</HistogramDataExpression>
+    			</Histogram>
+    			<PieChart>
+					<Id>1762785234397</Id>
+					<Name><![CDATA[chart]]></Name>
+					<X>4760</X><Y>740</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1762785234395</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1762848000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>290</Width>
+					<Height>380</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>0</XOffset>
+						<YOffset>10</YOffset>
+						<Width>280</Width>
+						<Height>280</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>80</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1762785235068</Id>
+					<Expression><![CDATA[inTerminal]]></Expression>
+					<Color>-352763</Color>
+						<Title><![CDATA[Esperando en terminal]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1762785235069</Id>
+					<Expression><![CDATA[inQueue]]></Expression>
+					<Color>-6632142</Color>
+						<Title><![CDATA[Esperando en mostrador]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1762785959746</Id>
+					<Expression><![CDATA[inPlane]]></Expression>
+					<Color>-14774017</Color>
+						<Title><![CDATA[En el pasillo del avión]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1762785991372</Id>
+					<Expression><![CDATA[seated]]></Expression>
+					<Color>-3137392</Color>
+						<Title><![CDATA[Sentado]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Text>
+					<Id>1762786274398</Id>
+					<Name><![CDATA[text15]]></Name>
+					<X>4780</X><Y>230</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Cantidad de pasajeros sentados]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1762786494446</Id>
+					<Name><![CDATA[text16]]></Name>
+					<X>5725</X><Y>215</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Tiempo desde que un pasajero ingresa 
+al avión hasta que se sienta]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1762786639823</Id>
+					<Name><![CDATA[text17]]></Name>
+					<X>4780</X><Y>700</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Estado de los pasajeros]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+    			<PieChart>
+					<Id>1762787386018</Id>
+					<Name><![CDATA[chart1]]></Name>
+					<X>5560</X><Y>720</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<RecurrenceProperties>
+						<Id>1762787386016</Id>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1762848000000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</RecurrenceCode>
+					</RecurrenceProperties>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>330</Width>
+					<Height>340</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>20</XOffset>
+						<YOffset>20</YOffset>
+						<Width>290</Width>
+						<Height>280</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>1762787387053</Id>
+					<Expression><![CDATA[preflightControlWorking]]></Expression>
+					<Color>-16744448</Color>
+						<Title><![CDATA[Trabajando]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>1762787387054</Id>
+					<Expression><![CDATA[preflightControlNoWorking]]></Expression>
+					<Color>-1632213</Color>
+						<Title><![CDATA[Al pedo]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Text>
+					<Id>1762788637190</Id>
+					<Name><![CDATA[text18]]></Name>
+					<X>5580</X><Y>700</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Estado de la mesa de control]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -5546,8 +5971,8 @@ initSimulation();]]></ActionCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
-					<Width>1200</Width>
-					<Height>780</Height>
+					<Width>1480</Width>
+					<Height>1240</Height>
 				</Area>
 			</Areas>
 
@@ -5893,8 +6318,12 @@ standing.setVisible(true);]]></EntryAction>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="120" Height="50">
 						<EntryAction><![CDATA[person.setVisible(false);
-isSeated = true;]]></EntryAction>
-						<ExitAction><![CDATA[isSeated = false;]]></ExitAction>
+isSeated = true;
+get_Main().inPlane--;
+get_Main().seated++;]]></EntryAction>
+						<ExitAction><![CDATA[isSeated = false;
+get_Main().inPlane++;
+get_Main().seated--;]]></ExitAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -6019,6 +6448,7 @@ walkingSince = 0;]]></EntryAction>
 					<Properties Source="1759930418416" Target="1759930441657" Trigger="message">
 						<Action><![CDATA[timeSeatedPed = time(SECOND)- startBoardingPed;
 get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
+get_Main().seatingTimeDataset.add(timeSeatedPed);
 ]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
@@ -6054,7 +6484,7 @@ get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
 					<Properties Source="1759930404152" Target="1759930441657" Trigger="message">
 						<Action><![CDATA[timeSeatedPed = (time(SECOND)) - startBoardingPed;
 get_Main().airbusA320.totalPassTimeToSeat += timeSeatedPed;
-]]></Action>
+get_Main().seatingTimeDataset.add(timeSeatedPed);]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
